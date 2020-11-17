@@ -12,12 +12,14 @@ const Layou = () => {
 
   const openShowUser = () => {
     setShowUser(true)
+    setShowAncet(false)
   }
   const openShowAncet = () => {
     setShowAncet(true)
+    setShowUser(false)
   }
   return (
-    <Context.Provider>
+    <Context.Provider value={{openShowAncet, openShowUser}}>
       <Layout>
         <Navbar />
         <Layout>

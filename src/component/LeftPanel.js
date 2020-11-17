@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Layout, Menu } from "antd";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { Context } from "../context";
 const { Sider } = Layout;
 
 const Line = styled.div`
@@ -21,6 +22,8 @@ const MenuBlock = styled.div`
 `;
 
 const LeftPanel = () => {
+  const { openShowAncet, openShowUser } = useContext(Context);
+
   const history = useHistory();
   return (
     <Sider width={"25%"} className="site-layout-background">
@@ -34,7 +37,7 @@ const LeftPanel = () => {
           <Menu.Item
             key="1"
             onClick={() => {
-              history.push("/choiseUser");
+              openShowAncet();
             }}
           >
             Пользователи
@@ -64,7 +67,14 @@ const LeftPanel = () => {
           <Line />
         </Menu.ItemGroup>
         <Menu.ItemGroup key="g1" title="SURVEY">
-          <Menu.Item key="13">Анкеты колоноскомии</Menu.Item>
+          <Menu.Item
+            key="13"
+            onClick={() => {
+              openShowUser();
+            }}
+          >
+            Анкеты колоноскомии
+          </Menu.Item>
           <Menu.Item key="14">Анкеты легких</Menu.Item>
           <Menu.Item key="15">Анкеты молочной железы</Menu.Item>
           <Menu.Item key="16">Анкеты печени</Menu.Item>
