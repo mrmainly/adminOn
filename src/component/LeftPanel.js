@@ -33,7 +33,7 @@ const LeftPanel = () => {
         defaultOpenKeys={["sub1"]}
         style={{ height: "100%", borderRight: 0 }}
       >
-        <Menu.ItemGroup key="g1" title="ACCOUNTS">
+        <Menu.ItemGroup key="g1" title="АККАУНТЫ">
           <Menu.Item
             key="1"
             onClick={() => {
@@ -44,11 +44,11 @@ const LeftPanel = () => {
           </Menu.Item>
           <Line />
         </Menu.ItemGroup>
-        <Menu.ItemGroup key="g1" title="ONCOLOGY">
+        <Menu.ItemGroup key="g1" title="ОНКОЛОГИЯ">
           <Menu.Item key="2">Формы обратной связи</Menu.Item>
           <Line />
         </Menu.ItemGroup>
-        <Menu.ItemGroup key="g1" title="RESAERCH">
+        <Menu.ItemGroup key="g1" title="ИССЛЕДОВАНИЕ">
           <Menu.Item key="3">Медицинские исследования</Menu.Item>
 
           <Menu.Item key="4">Местоположения исследований</Menu.Item>
@@ -66,7 +66,7 @@ const LeftPanel = () => {
           </Menu.Item>
           <Line />
         </Menu.ItemGroup>
-        <Menu.ItemGroup key="g1" title="SURVEY">
+        <Menu.ItemGroup key="g1" title="ОПРОС">
           <Menu.Item
             key="13"
             onClick={() => {

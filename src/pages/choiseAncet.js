@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Table, Layout } from "antd";
+import { Table, Layout, Input , Button} from "antd";
+import { DownloadOutlined } from '@ant-design/icons';
 import axios from "axios";
 import "antd/dist/antd.css";
-
+const {Search} = Input;
 const { Header, Content } = Layout;
 
 const ChoiseAncet = () => {
   const [data, setData] = useState("");
+  const [selectionType, setSelectionType] = useState('checkbox');
   useEffect(() => {
     try {
       axios.get("http://localhost:4200/AllANCET").then((res) => {
@@ -16,12 +18,22 @@ const ChoiseAncet = () => {
       console.log(err);
     }
   });
-
+  const onSearch = value => console.log(value);
+  const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+      console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    },
+    getCheckboxProps: record => ({
+      disabled: record.name === 'Disabled User', // Column configuration not to be checked
+      name: record.name,
+    }),
+  };
   const columns = [
     {
       title: "ПОЛЬЗОВАТЕЛЬ",
       dataIndex: "AncetUser",
       key: "AncetUser",
+      render: (text) => <a>{text}</a>,
     },
     {
       title: "CALCULATE SCORE",
@@ -39,7 +51,17 @@ const ChoiseAncet = () => {
         minHeight: 280,
       }}
     >
-      <Table columns={columns} dataSource={data} />
+        <Search
+      allowClear
+      enterButton="Добавить"
+      size="average"
+      onSearch={onSearch}
+      style={{width: '30%', marginBottom: 15}}
+    />
+      <Button style={{backgroundColor: '#a8a8a8', float: "right"}} type="default" shape="round" icon={<DownloadOutlined />} size="average">
+          ДОБАВИТЬ ПОЛЬЗОВАТЕЛЬ
+        </Button>
+      <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
     </Content>
   );
 };

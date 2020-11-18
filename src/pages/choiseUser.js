@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Table, Layout } from "antd";
+import { Table, Layout, Button, Input } from "antd";
+import { DownloadOutlined } from '@ant-design/icons';
 import axios from "axios";
 import "antd/dist/antd.css";
-
+const {Search} = Input;
 const { Header, Content } = Layout;
 
 const ChoiseUser = () => {
@@ -16,7 +17,7 @@ const ChoiseUser = () => {
       console.log(err);
     }
   });
-
+  const onSearch = value => console.log(value);
   const columns = [
     {
       title: "НОМЕР ТЕЛЕФОНА",
@@ -29,7 +30,7 @@ const ChoiseUser = () => {
       key: "fullname",
     },
     {
-      title: "IS ACTIVE",
+      title: "АКТИВЕН",
       dataIndex: "active",
       key: "active",
     },
@@ -58,6 +59,16 @@ const ChoiseUser = () => {
         minHeight: 280,
       }}
     >
+         <Search
+      allowClear
+      enterButton="Добавить"
+      size="average"
+      onSearch={onSearch}
+      style={{width: '30%', marginBottom: 15}}
+    />
+      <Button style={{backgroundColor: '#a8a8a8', float: "right"}} type="default" shape="round" icon={<DownloadOutlined />} size="average">
+          ДОБАВИТЬ ПОЛЬЗОВАТЕЛЬ
+        </Button>
       <Table columns={columns} dataSource={data} />
     </Content>
   );
