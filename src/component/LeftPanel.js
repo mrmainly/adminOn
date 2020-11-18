@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Layout, Menu } from "antd";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
@@ -21,8 +21,13 @@ const MenuBlock = styled.div`
   justify-content: space-between;
 `;
 
+
 const LeftPanel = () => {
   const { openShowAncet, openShowUser } = useContext(Context);
+
+  useEffect(() => {
+    openShowAncet();
+  }, [])
 
   const history = useHistory();
   return (
@@ -55,7 +60,7 @@ const LeftPanel = () => {
           <Menu.Item key="5">Онкомаркеры</Menu.Item>
           <Menu.Item key="6">Приемы</Menu.Item>
           <Menu.Item key="7">Результаты исследований НДКТ</Menu.Item>
-          <Menu.Item key="8">РЕЗУЛЬТАТЫ исследований УКЦУКЦУКЦУКЦКЦ</Menu.Item>
+          <Menu.Item key="8">РЕЗУЛЬТАТЫ исследований имуннохимический тест</Menu.Item>
           <Menu.Item key="9">Результаты исследований матки</Menu.Item>
           <Menu.Item key="10">
             Результаты исследований молочной железы

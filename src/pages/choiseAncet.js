@@ -1,10 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Table, Layout, Input , Button} from "antd";
+import { Table, Layout, Input , Button, Menu} from "antd";
 import { DownloadOutlined } from '@ant-design/icons';
 import axios from "axios";
 import "antd/dist/antd.css";
+
+import Filter from '../component/Filter'
+
 const {Search} = Input;
 const { Header, Content } = Layout;
+
 
 const ChoiseAncet = () => {
   const [data, setData] = useState("");
@@ -36,7 +40,7 @@ const ChoiseAncet = () => {
       render: (text) => <a>{text}</a>,
     },
     {
-      title: "CALCULATE SCORE",
+      title: "ВЫЧЕСЛИТЬ РЕЗУЛЬТАТ",
       dataIndex: "SCORE",
       key: "SCORE",
     },
@@ -58,9 +62,12 @@ const ChoiseAncet = () => {
       onSearch={onSearch}
       style={{width: '30%', marginBottom: 15}}
     />
+    
       <Button style={{backgroundColor: '#a8a8a8', float: "right"}} type="default" shape="round" icon={<DownloadOutlined />} size="average">
           ДОБАВИТЬ ПОЛЬЗОВАТЕЛЬ
         </Button>
+        <Filter />
+        
       <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
     </Content>
   );
